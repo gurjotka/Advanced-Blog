@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block nav %}
+<nav>
+  <a href="/">Home</a><br>
+  <a href="/about">About</a>
+</nav>
+{% endblock %}
+
+{% block content %}
+  <h2>This is our Page!</h2>
+  <p>Contact us</p>
+
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" >Send</button>
+
+</form>
+
+{% endblock %}

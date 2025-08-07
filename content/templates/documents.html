@@ -1,0 +1,9 @@
+<h2>Uploaded Documents</h2>
+<ul>
+  {% for doc in documents %}
+    <li>
+      {{ doc.title }} —
+      <a href="{{ doc.file.url }}" target="_blank">Download</a>
+    </li>
+  {% endfor %}
+</ul>

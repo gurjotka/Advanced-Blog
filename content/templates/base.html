@@ -1,0 +1,47 @@
+<!-- templates/base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Website{% endblock %}</title>
+</head>
+<body>
+    <header>
+        <h1>My Website</h1>
+        <h2>{{ user.username }}'s Profile</h2>
+        {% if user.profile.profile_picture %}
+            <img src="{{ user.profile.profile_picture.url }}" alt="Profile Picture" height='100' width='150' />
+        {% else %}
+            <img src="{% static 'images/profile_pics/solo_levelling.jpg' height='100' width='150' %}" alt="Default Profile" />
+        {% endif %}
+
+        {% block nav %}
+        {% if user.is_authenticated %}
+            <p>Hello, {{ user.username }}</p>
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+        {% else %}
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <button type="submit">Login</button>
+            </form>
+            <form method="POST" action="{% url 'register' %}">
+                {% csrf_token %}
+                <button type="submit">Register</button>
+            </form>
+        {% endif %}
+
+        {% endblock %}
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; 2025</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!-- templates/your_app/notifications.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notifications</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 2rem auto;
+    }
+    .notification {
+      padding: 10px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+    .timestamp {
+      font-size: 0.8em;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <h1>Recent Notifications</h1>
+
+  {% if notifications %}
+    {% for note in notifications %}
+      <div class="notification">
+        <p>{{ note.message }}</p>
+        <p class="timestamp">{{ note.created_at }}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No notifications yet.</p>
+  {% endif %}
+</body>
+</html>
