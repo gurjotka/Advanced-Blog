@@ -182,3 +182,6 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=365),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=365),
 }
+
+CSRF_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = False
